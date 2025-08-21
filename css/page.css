@@ -329,3 +329,18 @@ select:focus {
   box-shadow: 0 0 20px #b788ff;
   background: rgba(30, 15, 65, 0.9);
 }
+
+.gold-text-horoskop {
+  background: linear-gradient(90deg, #FFD700, #FFC700, #FFF3B0, #FFD700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  font-weight: bold; /* volitelně */
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
