@@ -165,7 +165,7 @@
       "Rodina a vztahy": "Sdílej své myšlenky a plány s rodinou, i když ti připadá, že nejsou zrovna nadšení. Podpora, kterou dostaneš, může být silnější, než čekáš.",
       "Peníze a práce": "<span style='color:#FFD700; font-weight:bold; text-shadow:0 0 5px #fff, 0 0 10px #FFD700;'>POUZE PRO ČLENY</span>",
       "Zdraví a kondice": "I když se cítíš unaveně, zkus si dát krátkou procházku nebo dechové cvičení. To ti rychle nabije baterky a zlepší náladu.",
-      "Láska a přátelství": "<span style='color:#FFD700; font-weight:bold; text-shadow:0 0 5px #fff, 0 0 10px #FFD700;'>POUZE PRO ČLENY</span>",
+      "Láska a přátelství": "<span style='color:#FFD700; text-shadow:0 0 5px #fff, 0 0 10px #FFD700;'>POUZE PRO ČLENY</span>",
       "Aktivity vhodné pro dnešní den": "Malování, tvorba playlistu, setkání s přáteli, práce na osobním projektu nebo hobby."
     },
     "2025-08-22": {
@@ -1966,4 +1966,5 @@
       "Aktivity vhodné pro dnešní den": "Plánování, relaxace, komunikace, sport, kreativní činnosti."
     }
   }
+
 }
