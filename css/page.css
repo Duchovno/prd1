@@ -1,0 +1,789 @@
+    .section {
+      padding: 0rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #c7a8f0;
+      text-shadow: 0 0 10px #9c4df4;
+    }
+
+    .section p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #d6b0ff;
+      line-height: 1.6;
+    }
+
+    .free-stuff-box {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00ff88;
+      background: rgba(0, 255, 136, 0.05);
+      text-align: center;
+    }
+
+    .free-stuff-box h3 {
+      font-size: 1.5rem;
+      color: #a0ffd0;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .free-stuff-box p {
+      text-align: center;
+      color: #d0ffe5;
+    }
+
+    .info-card {
+      margin-top: 4rem;
+      background: rgba(157, 81, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 20px #5a1b81;
+      padding: 2rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-card li {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #e3caff;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .info-card li::before {
+      content: "\2726";
+      position: absolute;
+      left: 0;
+      color: #b788ff;
+    }
+
+    .offer-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .offer-card {
+      background: rgba(18, 8, 38, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 15px #5a1b81;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .offer-card:hover {
+      transform: scale(1.05);
+    }
+
+    .offer-card h3 {
+      color: #d6b0ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-card p {
+      color: #bba0ff;
+    }
+
+.offer-card-premium {
+      background: rgba(18, 8, 38, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ffd700;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .offer-card-premium:hover {
+      transform: scale(1.05);
+    }
+
+    .offer-card-premium h3 {
+      color: #d6b0ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-card-premium p {
+      color: #bba0ff;
+    }
+
+
+
+.subscribe {
+  background: rgba(18, 8, 38, 0.95);
+  margin: 0 2rem 3rem;
+  border-radius: 15px;
+  /* display: flex; -- zrušíme flex, aby položky šly pod sebe */
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 0 30px #8e44ad;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe:hover {
+  background-color: rgba(18, 8, 38, 1);
+}
+
+.subscribe a {
+  display: block; /* místo flex */
+  width: 100%;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 15px; /* aby se zakulacení z subscribe projevilo i na linku */
+  overflow: hidden;
+}
+
+.subscribe .card-img {
+  width: 100%;         /* celá šířka nahoře */
+  height: 200px;       /* pevná výška */
+  border-radius: 15px 15px 0 0; /* zakulacení jen nahoře */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1rem; /* mezera pod obrázkem */
+}
+
+.subscribe-content {
+  padding: 1.5rem 2rem;
+  display: block; /* zrušeno flex a flex-direction */
+  text-align: center; /* text vycentrovaný */
+}
+
+.subscribe-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px #b788ff;
+  color: #fff;
+}
+
+.subscribe-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #c2a6ff;
+}
+
+.subscribe-content button {
+  background: #b788ff;
+  color: #3a056b;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  margin: 0 auto; /* aby bylo tlačítko centrované */
+  display: block;
+}
+
+.subscribe-content button:hover {
+  background-color: #9c4df4;
+}
+
+
+.subscribe.subscribe-gold {
+  box-shadow: 0 0 30px #ffd700;
+}
+
+.subscribe.subscribe-gold .subscribe-content button {
+  background: #ffd700;
+  color: #3a056b;
+}
+
+.subscribe.subscribe-gold .subscribe-content button:hover {
+  background-color: #e6c200;
+}
+
+.free-stuff-cta {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.glow-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0f0;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+  transition: transform 0.2s, box-shadow 0.3s ease;
+  border: none;       
+  outline: none;      
+  cursor: pointer;
+}
+
+.glow-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0;
+}
+
+.btn-order {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #7e49a6;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #b787ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-order:hover {
+  background-color: #a26ee2;
+  box-shadow: 0 0 15px #b787ff, 0 0 25px #a26ee2;
+}
+
+.box {
+      background: rgba(157, 81, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #9c4df4;
+      max-width: 1050px;
+text-align: center;
+      margin: 2rem auto;
+    }
+
+.stylovy-hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7e49a6, #b788ff, #7e49a6, transparent);
+  margin: 2.5rem auto;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #9c4df4;
+}
+
+#stars {
+  position: fixed;   
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none; 
+  background: black;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 1; }
+}
+
+
+/* Výchozí stav elementu – neviditelný a lehce posunutý dolů */
+.fade-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Po scrollu – element je viditelný */
+.fade-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #b788ff;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 8px #b788ff;
+}
+
+select {
+  background: rgba(18, 8, 38, 0.9);
+  color: #d6b0ff;
+  border: 1px solid #7e49a6;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 10px #7e49a6;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+  appearance: none;
+  cursor: pointer;
+  
+}
+
+select option {
+  background: #0d0618;
+  color: #d6b0ff;
+}
+
+select:hover,
+select:focus {
+  box-shadow: 0 0 20px #b788ff;
+  background: rgba(30, 15, 65, 0.9);
+}
+
+.gold-text-horoskop {
+  background: linear-gradient(90deg, #FFD700, #FFC700, #FFF3B0, #FFD700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  font-weight: bold; /* volitelně */
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.horoskop-blok {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #9c4df4;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #9c4df4;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 500px;
+  text-align: left;
+}
+
+.horoskop-blok p:first-child {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c7a8f0;
+  text-shadow: 0 0 8px #9c4df4;
+}
+
+.horoskop-blok p:last-child {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #d0ffe5;
+  line-height: 1.5;
+}
+
+
+/* --- Container --- */
+.container-sluzby {
+  max-width: 720px;
+  margin: 3rem auto 4rem;
+  padding: 0 2rem;
+}
+
+/* --- Nadpis --- */
+h1.sluzby-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: #c7a8f0;
+  text-shadow: 0 0 15px #9c4df4;
+}
+
+/* --- FAQ styl --- */
+.faq-item {
+  background: rgba(18, 8, 38, 0.9);
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #5a1b81;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+.faq-item:hover {
+  box-shadow: 0 0 25px #8a43ff;
+}
+.faq-question {
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #d6b0ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.faq-question::after {
+  content: "+";
+  font-size: 1.8rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+  color: #b788ff;
+}
+.faq-item.open .faq-question::after {
+  content: "–";
+  transform: rotate(180deg);
+}
+.faq-answer {
+  max-height: 0;
+  padding: 0 1.5rem;
+  color: #c9a8ff;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  overflow: hidden;
+}
+.faq-item.open .faq-answer {
+  padding: 1rem 1.5rem 1.5rem;
+  max-height: 1000px;
+}
+
+/* --- Cena box --- */
+.price-box {
+  background: rgba(18, 8, 38, 0.95);
+  box-shadow: 0 0 30px #8e44ad;
+  border-radius: 15px;
+  padding: 2rem 2rem;
+  text-align: center;
+  color: #f6e3ff;
+  margin: 3rem 0 4rem;
+}
+.price-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px #b788ff;
+  color: #fff;
+}
+.price-box p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #c9a8ff;
+}
+.price-amount {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #ffd700;
+  text-shadow: 0 0 20px #ffd700;
+  margin-top: 0.2rem;
+}
+
+.price-amount {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.old-price {
+  position: relative;
+  display: inline-block;
+  color: red;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.old-price::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px; /* tloušťka čáry */
+  background: red;
+  transform: rotate(-15deg); /* úhel škrtnutí */
+  transform-origin: center;
+}
+
+.new-price {
+  color: #2ecc71; /* zelená pro zvýraznění slevy */
+  font-size: 1.4em;
+}
+
+
+/* --- Formulář --- */
+form {
+  background: rgba(18, 8, 38, 0.9);
+  padding: 2rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #5a1b81;
+  max-width: 100%;
+}
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #b788ff;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 15px;
+  border: none;
+  background: #1a0e3a;
+  color: #e4d9ff;
+  font-size: 1rem;
+  box-shadow: inset 0 0 10px #5a2fff;
+  resize: vertical;
+  transition: box-shadow 0.3s ease;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 15px #b788ff;
+  background: #311d7a;
+}
+textarea {
+  min-height: 110px;
+}
+button[type="button"] {
+  background: #b788ff;
+  color: #3a056b;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 1.8rem;
+  box-shadow: 0 0 18px #9c4df4;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+button[type="button"]:hover {
+  background-color: #9c4df4;
+}
+
+
+
+.sluzby-box {
+  background: rgba(60, 0, 80, 0.3);
+  border: 1px solid rgba(180, 0, 255, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 40px 0;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(180, 0, 255, 0.2);
+  color: #eee;
+  animation: fadeIn 1.5s ease;
+}
+
+.sluzby-box h2 {
+  font-size: 1.6rem;
+  color: #f0baff;
+  margin-bottom: 1rem;
+}
+
+.sluzby-box p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.sluzby-box ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- FAQ Container --- */
+.faq-container {
+  margin: 4rem auto;
+}
+
+/* --- Checkboxy & stavové hlášky --- */
+.form-checks {
+  margin-top: 1.2rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0.6rem 0;
+  color: #c9a8ff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #b788ff; /* moderní prohlížeče */
+  cursor: pointer;
+}
+
+.checkbox a {
+  color: #b788ff;
+  text-decoration: underline;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.form-status.success {
+  color: #00ffa3;
+}
+
+.form-status.error {
+  color: #ff4d7a;
+}
+
+.footer-box {
+      background: rgba(157, 81, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #9c4df4;
+      max-width: none;
+      text-align: center;
+      margin: 2rem auto;
+    }
+
+#order-summary p {
+  margin: 10px 0;
+}
+
+.order-questions p {
+  margin-left: 20px; /* odsazení pro otázky */
+  margin-bottom: 8px;
+}
+
+/* Společné styly pro inputy */
+#date-of-birth-woman,
+#date-of-birth-man,
+#date-of-birth-uni,
+#time-of-birth {
+  width: 100%;               /* plná šířka formuláře */
+  padding: 10px 12px;        /* prostor uvnitř */
+  
+  font-size: 16px;            /* čitelné písmo */
+  color: #f5f5f5;            /* světlé písmo */
+  background-color: #1a1a1a; /* tmavé pozadí */
+  border: 1px solid #5a0bc5; /* fialový okraj */
+  border-radius: 8px;        /* jemně zaoblené rohy */
+  outline: none;             /* odstraní default outline */
+  box-shadow: 0 0 6px rgba(90, 11, 197, 0.4); /* jemný glow */
+  transition: all 0.2s ease-in-out; /* plynulý hover/focus efekt */
+}
+
+/* Hover efekt */
+#date-of-birth-woman:hover,
+#date-of-birth-man:hover,
+#date-of-birth-uni:hover,
+#time-of-birth:hover {
+  border-color: #b55cff;
+  box-shadow: 0 0 8px rgba(181, 92, 255, 0.6);
+}
+
+/* Focus efekt */
+#date-of-birth-woman:focus,
+#date-of-birth-man:focus,
+#date-of-birth-uni:focus,
+#time-of-birth:focus {
+  border-color: #e0b3ff;
+  box-shadow: 0 0 10px rgba(224, 179, 255, 0.8);
+}
+
+
+/* Box pro afirmaci */
+.afirmace-box.mystical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  perspective: 500px; /* pro jemný 3D efekt */
+}
+
+/* Samotný text s mystickým efektem */
+.mystical-text {
+  margin-top: 15px;
+  font-size: 1.4em;
+  font-weight: 500;
+  color: #e0d9ff;
+  opacity: 0;
+  transform: translateY(20px) rotateX(20deg) scale(0.9);
+  transition: all 1s ease-out;
+  text-shadow: 0 0 6px #a390ff, 0 0 12px #d0bfff;
+}
+
+.mystical-text.active {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg) scale(1);
+}
+
+
+/* VIP obrázky */
+.vip-container {
+  display: flex;
+  justify-content: center; /* obrázky uprostřed */
+  align-items: center;
+  gap: 1rem;               /* mezera mezi obrázky */
+  flex-wrap: wrap;          /* obrázky se zalamují při menší šířce */
+  text-align: center;
+}
+
+.vip-img {
+  width: 50%;              /* menší než původně, aby nebyly obrovské na desktopu */
+  max-width: 450px;        /* omezení maximální velikosti */
+  height: auto;
+  display: block;
+  border: 3px solid #FFD700; 
+  border-radius: 10px;
+  box-shadow: 0 0 20px #FFD700; 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.vip-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #FFD700;
+}
+
+/* Mobilní verze */
+@media screen and (max-width: 767px) {
+  .vip-container {
+    flex-direction: column;
+    gap: 0.8rem;           /* menší mezera mezi obrázky */
+    align-items: center;
+  }
+
+  .vip-img {
+    width: 80%;
+    max-width: 300px;       /* omezí příliš velké obrázky na mobilu */
+    margin: 0 auto;
+  }
+}

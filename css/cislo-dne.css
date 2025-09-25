@@ -1,0 +1,24 @@
+#cislo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00ff00; /* zářivě zelená */
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00; /* glow efekt */
+  text-align: center;
+  opacity: 0;
+  filter: blur(20px);
+  transition: none; /* vypnout původní transition */
+}
+
+#cislo.show {
+  animation: reveal 2.5s forwards;
+}
+
+@keyframes reveal {
+  0% { opacity: 0; filter: blur(20px); transform: scale(0.8); }
+  100% { opacity: 1; filter: blur(0px); transform: scale(1); }
+}
+  
+  #hlaska {
+    margin-top: 1rem;
+    display: none;
+  }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objednávka | Astral Zone</title>
+  <link rel="stylesheet" href="css/menu-footer.css">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/objednavka.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="index.html">Astral Zone</a></h1>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav id="nav">
+    <a href="index.html">Domů</a>
+    <a href="tarot.html">Tarotové výklady</a>
+    <a href="horoskop.html">Horoskopy</a>
+    <a href="numerologie.html">Numerologie</a>
+    <a href="ritualy.html">Rituály</a>
+    <a href="predplatne.html" class="premium-link">Předplatné</a>
+  </nav>
+</header>
+
+<section class="container-sluzby">
+  <h1 class="sluzby-title fade-element">Tvá objednávka</h1>
+
+  <div id="order-summary" class="fade-element">
+    <!-- sem se načtou údaje z localStorage -->
+  </div>
+
+<br><br>
+
+  <form id="final-order-form">
+
+  <h1>Fakturační údaje</h1>
+
+  <label for="billing-name">Jméno a příjmení</label>
+  <input type="text" id="billing-name" name="billing-name" required placeholder="Tvé jméno a příjmení">
+
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required placeholder="Tvůj email">
+
+  <label for="street">Ulice a číslo popisné</label>
+  <input type="text" id="street" name="street" required placeholder="Např. Hlavní 123">
+
+  <label for="zip">PSČ</label>
+  <input type="text" id="zip" name="zip" required placeholder="Např. 11000">
+
+  <label for="city">Město</label>
+  <input type="text" id="city" name="city" required placeholder="Např. Praha">
+
+<hr class="stylovy-hr" />
+
+  <label class="checkbox-label">
+    Souhlasím s <a href="obchodni-podminky.html">obchodními podmínkami</a>
+    <input type="checkbox" id="terms" required>
+  </label>
+
+  <label class="checkbox-label">
+    Souhlasím s podmínkami <a href="odstoupeni-od-smlouvy.html">odstoupení od kupní smlouvy</a>
+    <input type="checkbox" id="withdrawal" required>
+  </label>
+
+  <button type="submit">Potvrdit objednávku</button>
+</form>
+
+  <div id="form-status" class="form-status"></div>
+</section>
+
+<footer>
+
+<div class="box">
+  <p>* Využíváním služeb uživatel souhlasí s <a href="obecne-podminky.html" target="_blank">Podmínkami užití.</a><br><br><a href="zasady-cookies.html" target="_blank">*ZÁSADY POUŽÍVÁNÍ COOKIES</a><br><a href="odstoupeni-od-smlouvy.html" target="_blank">* ODSTOUPENÍ OD KUPNÍ SMLOUVY</a><br><a href="obchodni-podminky.html" target="_blank">* OBCHODNÍ PODMÍNKY</a><br><a href="gdpr.html" target="_blank">* GDPR</a><br><a href="kontakt.html" target="_blank">* KONTAKT</a></p>
+</div>
+
+  © 2025 Astral Zone. Všechna práva vyhrazena.
+</footer>
+
+<!-- EmailJS knihovna a inicializace PUBLIC KEY -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  // Inicializace EmailJS – public key
+  emailjs.init('pOWpwIv-ydhiVC4xI');
+</script>
+
+
+<script src="js/objednavka.js"></script>
+<script src="js/page.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

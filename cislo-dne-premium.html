@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarotové výklady | Astral Zone</title>
+  <link rel="stylesheet" href="css/menu-footer.css">
+  <link rel="stylesheet" href="css/cislo-dne-premium.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="index.html">Astral Zone</a></h1>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav id="nav">
+    <a href="index.html">Domů</a>
+    <a href="tarot.html">Tarotové výklady</a>
+    <a href="horoskop.html">Horoskopy</a>
+    <a href="numerologie.html">Numerologie</a>
+    <a href="ritualy.html">Rituály</a>
+    <a href="predplatne.html" class="premium-link">Předplatné</a>
+  </nav>
+</header>
+
+<br><br>
+<div class="box">
+  <h2>🔮 Magické číslo dne</h2>
+  <p>Zapiš prosím pouze své křestní jméno.</p>
+  <input type="text" id="jmeno" placeholder="Zadej své jméno" />
+
+  <p>Vyber své znamení zvěrokruhu</p>
+  <select id="znameni">
+    <option value="1">Beran</option>
+    <option value="2">Býk</option>
+    <option value="3">Blíženci</option>
+    <option value="4">Rak</option>
+    <option value="5">Lev</option>
+    <option value="6">Panna</option>
+    <option value="7">Váhy</option>
+    <option value="8">Štír</option>
+    <option value="9">Střelec</option>
+    <option value="10">Kozoroh</option>
+    <option value="11">Vodnář</option>
+    <option value="12">Ryby</option>
+  </select>
+
+  <p id="hlaska" style="font-weight:bold; margin-top:1rem; display:none;">
+    Získat unikátní číslo dne lze pouze 1x denně.
+  </p>
+  <button id="tlacitkoCislo" onclick="spocitejCislo()">Zjistit dnešní číslo</button>
+
+  <div id="vysledek"></div>
+</div>
+
+<footer>
+  <div class="box">
+    <p>* Využíváním služeb uživatel souhlasí s <a href="obecne-podminky.html" target="_blank">Podmínkami užití.</a><br><br>
+    <a href="zasady-cookies.html" target="_blank">*ZÁSADY POUŽÍVÁNÍ COOKIES</a><br>
+    <a href="odstoupeni-od-smlouvy.html" target="_blank">* ODSTOUPENÍ OD KUPNÍ SMLOUVY</a><br>
+    <a href="obchodni-podminky.html" target="_blank">* OBCHODNÍ PODMÍNKY</a><br>
+    <a href="gdpr.html" target="_blank">* GDPR</a><br>
+    <a href="kontakt.html" target="_blank">* KONTAKT</a></p>
+  </div>
+  © 2025 Astral Zone. Všechna práva vyhrazena.
+</footer>
+
+<script src="js/cislo-dne-premium.js"></script>
+<script src="js/cislo-dne-vyznamy.js"></script>
+<script src="js/page.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

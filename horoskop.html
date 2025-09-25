@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horoskop | Astral Zone</title>
+  <link rel="stylesheet" href="css/menu-footer.css">
+  <link rel="stylesheet" href="css/page.css">
+  
+</head>
+<body>
+
+<div id="stars"></div>
+
+<header>
+  <h1 class="logo"><a href="index.html">Astral Zone</a></h1>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav id="nav">
+    <a href="index.html">Domů</a>
+    <a href="tarot.html">Tarotové výklady</a>
+    <a href="horoskop.html">Horoskopy</a>
+    <a href="numerologie.html">Numerologie</a>
+    <a href="ritualy.html">Rituály</a>
+    <a href="predplatne.html" class="premium-link">Předplatné</a>
+  </nav>
+</header>
+
+<section class="section info-card fade-element">
+  <h2>Co jsou horoskopy?</h2>
+  <p>Horoskopy jsou nástrojem, který ukazuje, jak postavení planet a znamení zvěrokruhu ovlivňuje náš každodenní život. Nabízejí inspiraci, doporučení i upozornění na aktuální energetické vlivy a představují symbolický jazyk, díky kterému lze lépe porozumět sobě samým i dějům, které nás obklopují.</p>
+</section>
+
+
+<hr class="stylovy-hr" />
+
+<section class="section free-stuff-box fade-element">
+  <h3>Denní horoskop</h3>
+
+  <label for="znameni">Vyber své znamení:</label>
+  <select id="znameni">
+    <option value="">-- Vyber znamení --</option>
+    <option value="Beran">Beran</option>
+    <option value="Býk">Býk</option>
+    <option value="Blíženci">Blíženci</option>
+    <option value="Rak">Rak</option>
+    <option value="Lev">Lev</option>
+    <option value="Panna">Panna</option>
+    <option value="Váhy">Váhy</option>
+    <option value="Štír">Štír</option>
+    <option value="Střelec">Střelec</option>
+    <option value="Kozoroh">Kozoroh</option>
+    <option value="Vodnář">Vodnář</option>
+    <option value="Ryby">Ryby</option>
+  </select>
+
+<div class="free-stuff-cta fade-element">
+  <button id="btn-zobrazit" class="glow-button">Zobrazit horoskop</button>
+</div>
+<br><br>
+<div id="horoskop-vystup">
+  <!-- Výstup horoskopu se zobrazí zde -->
+</div>
+
+</section>
+
+<hr class="stylovy-hr" />
+
+<section class="section fade-element">
+  <h2>Horoskop na míru?</h2>
+  <div class="offer-wrapper fade-element">
+    <div class="offer-card fade-element">
+  <h3>Měsíční horoskop (roční)</h3>
+  <p>Měsíční horoskop na míru tvořen podle tvého přesného data narození.</p>
+  <a href="mesicni-horoskop.html" class="btn-order">Objednat horoskop</a>
+</div>
+
+<div class="offer-card fade-element">
+  <h3>Týdenní horoskop (roční)</h3>
+  <p>Každý týden v roce podle tvého přesného data narození.</p>
+  <a href="tydenni-horoskop.html" class="btn-order">Objednat horoskop</a>
+</div>
+
+  </div>
+</section>
+
+<hr class="stylovy-hr" />
+
+<section class="section fade-element">
+    <div class="offer-wrapper fade-element">
+    <div class="offer-card fade-element">
+  <h3>Výhodný balíček</h3>
+  <p>Máš zájem nejen o horoskopy, ale také numerologii, tarot a rituály? Vyber si balíček služeb a ušetři!</p>
+  <a href="balicky.html" class="btn-order">Přejít na nabídku</a>
+</div>
+
+</section>
+
+
+<hr class="stylovy-hr" />
+
+<section class="subscribe subscribe-gold fade-element">
+  <a href="predplatne.html">
+    <div class="card-img" style="background-image: url('images/pages/cover-subscribe.jpg'); height: 200px;"></div>
+    <div class="subscribe-content fade-element">
+      <h2>Staň se členem!</h2>
+      <p>Získej přístup k exkluzivním výkladům, rituálům a osobnímu vedení. Jen pro zasvěcené.</p>
+      <button>Chci předplatné</button>
+    </div>
+  </a>
+</section>
+
+<footer>
+
+<div class="box">
+  <p>* Využíváním služeb uživatel souhlasí s <a href="obecne-podminky.html" target="_blank">Podmínkami užití.</a><br><br><a href="zasady-cookies.html" target="_blank">*ZÁSADY POUŽÍVÁNÍ COOKIES</a><br><a href="odstoupeni-od-smlouvy.html" target="_blank">* ODSTOUPENÍ OD KUPNÍ SMLOUVY</a><br><a href="obchodni-podminky.html" target="_blank">* OBCHODNÍ PODMÍNKY</a><br><a href="gdpr.html" target="_blank">* GDPR</a><br><a href="kontakt.html" target="_blank">* KONTAKT</a></p>
+</div>
+
+  © 2025 Astral Zone. Všechna práva vyhrazena.
+</footer>
+
+<script src="js/horoskop.js"></script>
+<script src="js/page.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

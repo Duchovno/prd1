@@ -1,0 +1,20 @@
+/* Základ vykreslení bloků */
+#horoskop-vystup .horoskop-blok {
+  margin: 10px 0;
+}
+
+/* Nadpis kategorie tučně */
+#horoskop-vystup .kategorie {
+  font-weight: 700;
+}
+
+/* Text kategorie ponecháme inline */
+#horoskop-vystup .kategorie-text {
+  display: inline;
+}
+
+/* Zlato pro vybrané kategorie – !important pro případ, že je někde barva na ID */
+#horoskop-vystup .zlata,
+#horoskop-vystup .zlata-text {
+  color: #d4af37 !important;
+}

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EzoPán — Denní horoskopy (CZ)</title>
+  <style>
+    :root{
+      --bg:#0b0710;
+      --card:#0f0b14;
+      --accent:#8b5cf6; /* fialová vibe */
+      --muted:#a6accd;
+      --glass: rgba(255,255,255,0.03);
+    }
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(139,92,246,0.08), transparent),
+                  radial-gradient(900px 400px at 90% 90%, rgba(34,197,94,0.02), transparent);
+      background-color:var(--bg);
+      color:#e6e7ee;
+      -webkit-font-smoothing:antialiased;
+      padding:28px;
+      box-sizing:border-box;
+    }
+
+    .wrap{max-width:1100px;margin:0 auto;}
+    header{display:flex;gap:16px;align-items:center;margin-bottom:20px;}
+    .logo{
+      width:64px;height:64px;border-radius:14px;
+      background:linear-gradient(135deg,#2b0b3a 0%, #5b2fa6 100%);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 20px rgba(139,92,246,0.18);
+      font-weight:700;font-size:20px;color:white;
+    }
+    h1{font-size:20px;margin:0;}
+    p.lead{margin:0;color:var(--muted);font-size:13px;}
+
+    .controls{display:flex;gap:12px;align-items:center;margin:18px 0 24px;}
+    .btn{
+      background:linear-gradient(180deg, rgba(139,92,246,0.18), rgba(139,92,246,0.12));
+      border:1px solid rgba(139,92,246,0.24);
+      color: #fff;padding:10px 14px;border-radius:10px;
+      cursor:pointer;font-weight:600;
+    }
+    .btn.secondary{
+      background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);
+    }
+    .small{font-size:13px;padding:8px 10px;border-radius:8px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+      gap:16px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+      min-height:160px;display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .sign{
+      display:flex;align-items:center;gap:10px;
+    }
+    .sig-ico{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px;border:1px solid rgba(255,255,255,0.03)
+    }
+    .desc{margin-top:12px;color: #dfe3ff;font-size:14px;line-height:1.45;flex:1}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--muted)}
+    .meta span{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center;}
+
+    .loader{display:inline-block;border:3px solid rgba(255,255,255,0.06);border-left-color:var(--accent);width:18px;height:18px;border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .error{color:#ffb4b4;background: linear-gradient(180deg, rgba(255,90,90,0.03), transparent);padding:10px;border-radius:8px;border:1px solid rgba(255,90,90,0.08);font-size:13px}
+    .note{font-size:13px;color:var(--muted)}
+    .controls .fill{flex:1;display:flex;gap:10px}
+    input[type="text"]{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:#fff;min-width:220px}
+    .small-muted{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">EP</div>
+      <div>
+        <h1>EzoPán — Denní horoskopy (CZ)</h1>
+        <p class="lead">Rychle testovací verze. Zdroj: Aztro API + LibreTranslate (free public endpoint).</p>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button id="btnFetchAll" class="btn">Načíst horoskopy (všechna znamení)</button>
+      <button id="btnFetchSingle" class="btn secondary">Načíst jen vybrané znamení</button>
+
+      <div class="fill">
+        <select id="signSelect" class="small">
+          <option value="aries">Beran</option>
+          <option value="taurus">Býk</option>
+          <option value="gemini">Blíženci</option>
+          <option value="cancer">Rak</option>
+          <option value="leo">Lev</option>
+          <option value="virgo">Panna</option>
+          <option value="libra">Váhy</option>
+          <option value="scorpio">Štír</option>
+          <option value="sagittarius">Střelec</option>
+          <option value="capricorn">Kozoroh</option>
+          <option value="aquarius">Vodnář</option>
+          <option value="pisces">Ryby</option>
+        </select>
+
+        <input id="translateEndpoint" type="text" placeholder="Volitelně: vlastní translate endpoint (JSON POST)" title="Např. https://libretranslate.de/translate" />
+        <button id="btnApplyEndpoint" class="small">Použít</button>
+      </div>
+
+      <div style="margin-left:8px">
+        <span id="status" class="small-muted">Stav: čekám</span>
+      </div>
+    </div>
+
+    <div id="grid" class="grid" aria-live="polite"></div>
+
+    <footer>
+      <div class="note">Tip: pro produkci použij svůj překladový klíč (DeepL/Google) nebo nastav backend proxy. Public endpoints můžou padnout.</div>
+    </footer>
+  </div>
+
+<script>
+/*
+  EzoPán — horoskopy v CZ
+  - tahá z Aztro API (https://aztro.sameerkumar.website/)
+  - překládá přes LibreTranslate endpoint (default: https://libretranslate.de/translate)
+  - zobrazuje výsledky jako JSON + cards
+*/
+
+const SIGNS = [
+  {id:'aries', cz:'Beran'},
+  {id:'taurus', cz:'Býk'},
+  {id:'gemini', cz:'Blíženci'},
+  {id:'cancer', cz:'Rak'},
+  {id:'leo', cz:'Lev'},
+  {id:'virgo', cz:'Panna'},
+  {id:'libra', cz:'Váhy'},
+  {id:'scorpio', cz:'Štír'},
+  {id:'sagittarius', cz:'Střelec'},
+  {id:'capricorn', cz:'Kozoroh'},
+  {id:'aquarius', cz:'Vodnář'},
+  {id:'pisces', cz:'Ryby'}
+];
+
+const grid = document.getElementById('grid');
+const status = document.getElementById('status');
+const btnFetchAll = document.getElementById('btnFetchAll');
+const btnFetchSingle = document.getElementById('btnFetchSingle');
+const signSelect = document.getElementById('signSelect');
+const translateEndpointInput = document.getElementById('translateEndpoint');
+const btnApplyEndpoint = document.getElementById('btnApplyEndpoint');
+
+let TRANSLATE_ENDPOINT = 'https://libretranslate.de/translate'; // default public endpoint
+let TRANSLATE_ENABLED = true;
+
+btnApplyEndpoint.addEventListener('click', ()=>{
+  const v = translateEndpointInput.value.trim();
+  if(v){
+    TRANSLATE_ENDPOINT = v;
+    status.textContent = 'Stav: použit vlastní translate endpoint.';
+  } else {
+    TRANSLATE_ENDPOINT = 'https://libretranslate.de/translate';
+    status.textContent = 'Stav: použit default translate endpoint.';
+  }
+});
+
+btnFetchAll.addEventListener('click', ()=>{ loadAllSigns(); });
+btnFetchSingle.addEventListener('click', ()=>{ loadSingle(signSelect.value); });
+
+function setStatus(text, busy=false){
+  status.innerHTML = busy ? `${text} <span class="loader" style="margin-left:8px"></span>` : text;
+}
+
+async function loadAllSigns(){
+  grid.innerHTML = '';
+  setStatus('Načítám všechna znamení...', true);
+  try{
+    // Fetch sequentially to avoid hammering translation endpoint
+    for(const s of SIGNS){
+      const card = createLoadingCard(s.cz);
+      grid.appendChild(card);
+      try{
+        const raw = await fetchAztro(s.id);
+        const translated = await translateHoroscopeBlock(raw);
+        updateCardWithData(card, s.cz, translated, raw);
+      } catch(err){
+        // mark card as error but keep going
+        markCardError(card, err);
+      }
+    }
+    setStatus('Hotovo — horoskopy načteny.');
+  }catch(e){
+    setStatus('Chyba při načítání: ' + e.message);
+  }
+}
+
+async function loadSingle(sign){
+  grid.innerHTML = '';
+  setStatus('Načítám ' + sign + '...', true);
+  const s = SIGNS.find(x=>x.id===sign);
+  const card = createLoadingCard(s.cz);
+  grid.appendChild(card);
+  try{
+    const raw = await fetchAztro(s.id);
+    const translated = await translateHoroscopeBlock(raw);
+    updateCardWithData(card, s.cz, translated, raw);
+    setStatus('Hotovo — načteno ' + s.cz);
+  } catch(err){
+    markCardError(card, err);
+    setStatus('Chyba: ' + err.message);
+  }
+}
+
+/* UI helpers */
+function createLoadingCard(signName){
+  const c = document.createElement('div');
+  c.className = 'card';
+  c.innerHTML = `
+    <div class="sign"><div class="sig-ico">★</div><div><strong>${escapeHtml(signName)}</strong><div class="small-muted">načítám...</div></div></div>
+    <div style="margin-top:12px"><div class="loader"></div></div>
+  `;
+  return c;
+}
+
+function updateCardWithData(card, signName, translated, raw){
+  // translated: {description, compatibility, mood, color, lucky_number, lucky_time}
+  card.innerHTML = `
+    <div>
+      <div class="sign">
+        <div class="sig-ico">♈</div>
+        <div>
+          <strong>${escapeHtml(signName)}</strong>
+          <div class="small-muted">denní horoskop</div>
+        </div>
+      </div>
+      <div class="desc">${escapeHtml(translated.description || raw.description)}</div>
+    </div>
+
+    <div class="meta">
+      <span>Kompatibilita: ${escapeHtml(translated.compatibility || raw.compatibility)}</span>
+      <span>Nálada: ${escapeHtml(translated.mood || raw.mood)}</span>
+      <span>Barva: ${escapeHtml(translated.color || raw.color)}</span>
+      <span>Štěst. číslo: ${escapeHtml(translated.lucky_number || raw.lucky_number)}</span>
+      <span>Štěst. čas: ${escapeHtml(translated.lucky_time || raw.lucky_time)}</span>
+    </div>
+  `;
+}
+
+function markCardError(card, err){
+  card.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="sign">
+        <div class="sig-ico">⚠</div>
+        <div><strong>Chyba</strong><div class="small-muted">Nepodařilo se načíst</div></div>
+      </div>
+      <div class="error"> ${escapeHtml((err && err.message) ? err.message : 'Neznámá chyba')} </div>
+      <div class="note">Zkus znovu nebo si nastav vlastní překladový endpoint.</div>
+    </div>
+  `;
+}
+
+/* Networking: Aztro + Translate */
+async function fetchAztro(sign){
+  // Aztro expects POST with sign & day in querystring (or body). We use querystring per docs.
+  const url = `https://aztro.sameerkumar.website/?sign=${encodeURIComponent(sign)}&day=today`;
+  const resp = await fetch(url, { method:'POST' });
+  if(!resp.ok) throw new Error('Aztro API error: ' + resp.status);
+  const data = await resp.json();
+  // data contains: date_range, current_date, description, compatibility, mood, color, lucky_number, lucky_time
+  return data;
+}
+
+async function translateHoroscopeBlock(raw){
+  // We'll translate description + compatibility + mood + color; leave numbers as-is
+  if(!TRANSLATE_ENABLED) return raw;
+  try{
+    const toTranslate = [
+      {k:'description', v: raw.description},
+      {k:'compatibility', v: raw.compatibility},
+      {k:'mood', v: raw.mood},
+      {k:'color', v: raw.color}
+    ];
+
+    const translations = {};
+    for(const t of toTranslate){
+      // small delay to be a bit friendlier to public endpoints
+      await sleep(120);
+      translations[t.k] = await translateText(t.v);
+    }
+    return {
+      description: translations.description,
+      compatibility: translations.compatibility,
+      mood: translations.mood,
+      color: translations.color,
+      lucky_number: raw.lucky_number,
+      lucky_time: raw.lucky_time
+    };
+  } catch(err){
+    console.warn('Translate failed', err);
+    // fallback: return original english but keep structure
+    return raw;
+  }
+}
+
+async function translateText(text){
+  if(!text) return text;
+  // If user has their own translate endpoint that requires different body, they'd need to adapt.
+  const payload = {
+    q: text,
+    source: "en",
+    target: "cs",
+    format: "text"
+  };
+  const resp = await fetch(TRANSLATE_ENDPOINT, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+  if(!resp.ok){
+    throw new Error('Translate API error: ' + resp.status);
+  }
+  const j = await resp.json();
+  // LibreTranslate returns {translatedText: "..."} or {translation: "..."} depending on instance
+  return j.translatedText || j.translation || (j.result ? j.result : null) || (()=>{ throw new Error('Unexpected translate response')})();
+}
+
+/* small util */
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+function escapeHtml(s){
+  if(s===null || s===undefined) return '';
+  return String(s)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+// Auto-load last used sign set? Nah – keep manual to avoid background calls.
+// But let's do a tiny convenience: load all on first open.
+document.addEventListener('DOMContentLoaded', ()=>{
+  // try to load cached json from sessionStorage first (fast)
+  const cached = sessionStorage.getItem('ezopan_horoskopy_v1');
+  if(cached){
+    try{
+      const parsed = JSON.parse(cached);
+      // render cached quickly
+      parsed.forEach(item=>{
+        const card = document.createElement('div');
+        card.className = 'card';
+        updateCardWithData(card, item.signName, item.translated, item.raw);
+        grid.appendChild(card);
+      });
+      setStatus('Načteno z cache. Stiskni "Načíst horoskopy" pro aktualizaci.');
+    } catch(e){
+      // ignore
+      setStatus('Cache unusable.');
+    }
+  } else {
+    setStatus('Stiskni "Načíst horoskopy" pro první načtení.');
+  }
+});
+
+// Save new results to sessionStorage (so page reload rychle zobrazí)
+async function saveCache(results){
+  try{
+    sessionStorage.setItem('ezopan_horoskopy_v1', JSON.stringify(results));
+  } catch(e){ /* ignore */ }
+}
+
+// override update to save cache when done
+// To implement caching, wrap loadAllSigns to collect data
+async function loadAllSigns(){
+  grid.innerHTML = '';
+  setStatus('Načítám všechna znamení...', true);
+  const resultsForCache = [];
+  try{
+    for(const s of SIGNS){
+      const card = createLoadingCard(s.cz);
+      grid.appendChild(card);
+      try{
+        const raw = await fetchAztro(s.id);
+        const translated = await translateHoroscopeBlock(raw);
+        updateCardWithData(card, s.cz, translated, raw);
+        resultsForCache.push({sign:s.id, signName:s.cz, raw, translated});
+      } catch(err){
+        markCardError(card, err);
+      }
+    }
+    // save cache
+    saveCache(resultsForCache);
+    setStatus('Hotovo — horoskopy načteny.');
+  }catch(e){
+    setStatus('Chyba při načítání: ' + e.message);
+  }
+}
+
+// single version also caches single result into combined cache
+async function loadSingle(sign){
+  grid.innerHTML = '';
+  setStatus('Načítám ' + sign + '...', true);
+  const s = SIGNS.find(x=>x.id===sign);
+  const card = createLoadingCard(s.cz);
+  grid.appendChild(card);
+  try{
+    const raw = await fetchAztro(s.id);
+    const translated = await translateHoroscopeBlock(raw);
+    updateCardWithData(card, s.cz, translated, raw);
+    // merge into cache
+    try{
+      const cached = sessionStorage.getItem('ezopan_horoskopy_v1');
+      let arr = cached ? JSON.parse(cached) : [];
+      // replace existing item for sign or push
+      const idx = arr.findIndex(x=>x.sign===s.id);
+      const newItem = {sign:s.id, signName:s.cz, raw, translated};
+      if(idx>=0) arr[idx] = newItem; else arr.push(newItem);
+      sessionStorage.setItem('ezopan_horoskopy_v1', JSON.stringify(arr));
+    } catch(e){}
+    setStatus('Hotovo — načteno ' + s.cz);
+  } catch(err){
+    markCardError(card, err);
+    setStatus('Chyba: ' + err.message);
+  }
+}
+</script>
+</body>
+</html>
