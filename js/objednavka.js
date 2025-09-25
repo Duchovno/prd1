@@ -59,28 +59,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const zip = document.getElementById("zip").value.trim();
     const city = document.getElementById("city").value.trim();
 
+    // === sestavení userInputs pouze s vyplněnými údaji ===
+    let userInputs = "";
+    if(orderSummary.customerName) userInputs += `Jméno: ${orderSummary.customerName}\n`;
+    if(orderSummary.dateOfBirthUni) userInputs += `Datum narození: ${orderSummary.dateOfBirthUni}\n`;
+    if(orderSummary.dateOfBirthWoman) userInputs += `Datum narození ženy: ${orderSummary.dateOfBirthWoman}\n`;
+    if(orderSummary.dateOfBirthMan) userInputs += `Datum narození muže: ${orderSummary.dateOfBirthMan}\n`;
+    if(orderSummary.timeOfBirth) userInputs += `Čas narození: ${orderSummary.timeOfBirth}\n`;
+    if(orderSummary.placeOfBirth) userInputs += `Místo narození: ${orderSummary.placeOfBirth}\n`;
+    if(orderSummary.questions?.length) userInputs += `Otázky: ${orderSummary.questions.join(", ")}\n`;
+    if(orderSummary.messages?.angel) userInputs += `Angel: ${orderSummary.messages.angel}\n`;
+    if(orderSummary.messages?.love) userInputs += `Love: ${orderSummary.messages.love}\n`;
+    if(orderSummary.messages?.money) userInputs += `Money: ${orderSummary.messages.money}\n`;
+    if(orderSummary.messages?.health) userInputs += `Health: ${orderSummary.messages.health}\n`;
+    if(orderSummary.messages?.career) userInputs += `Career: ${orderSummary.messages.career}\n`;
+    if(street) userInputs += `Street: ${street}\n`;
+    if(zip) userInputs += `PSČ: ${zip}\n`;
+    if(city) userInputs += `Město: ${city}\n`;
+
     const templateParams = {
-      billingName: billingName,                     // pro {{billingName}}
+      billingName: billingName,       // pro {{billingName}}
       customer_email: email, 
-      serviceName: orderSummary.vykladType || "-", // pro {{serviceName}}
-      price: orderSummary.price || "-",            // pro {{price}}
-      userInputs: `
-Jméno: ${orderSummary.customerName || "-"}
-Datum narození: ${orderSummary.dateOfBirthUni || "-"}
-Datum narození ženy: ${orderSummary.dateOfBirthWoman || "-"}
-Datum narození muže: ${orderSummary.dateOfBirthMan || "-"}
-Čas narození: ${orderSummary.timeOfBirth || "-"}
-Místo narození: ${orderSummary.placeOfBirth || "-"}
-Otázky: ${orderSummary.questions?.join(", ") || "-"}
-Angel: ${orderSummary.messages?.angel || "-"}
-Love: ${orderSummary.messages?.love || "-"}
-Money: ${orderSummary.messages?.money || "-"}
-Health: ${orderSummary.messages?.health || "-"}
-Career: ${orderSummary.messages?.career || "-"}
-Street: ${street || "-"}
-PSČ: ${zip || "-"}
-Město: ${city || "-"}
-      `
+      serviceName: orderSummary.vykladType || "-",
+      price: orderSummary.price || "-",
+      userInputs: userInputs
     };
 
     // Odeslání na vlastní email (interní)
@@ -99,4 +101,3 @@ Město: ${city || "-"}
       .catch(err => console.error('Chyba při odesílání potvrzení:', err));
   });
 });
-
