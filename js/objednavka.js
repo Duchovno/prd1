@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const templateParams = {
       billingName: billingName,                     // pro {{billingName}}
+      customer_email: email, 
       serviceName: orderSummary.vykladType || "-", // pro {{serviceName}}
       price: orderSummary.price || "-",            // pro {{price}}
       userInputs: `
@@ -98,3 +99,4 @@ Město: ${city || "-"}
       .catch(err => console.error('Chyba při odesílání potvrzení:', err));
   });
 });
+
