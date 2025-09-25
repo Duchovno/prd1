@@ -73,9 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(orderSummary.messages?.money) userInputs += `Money: ${orderSummary.messages.money}\n`;
     if(orderSummary.messages?.health) userInputs += `Health: ${orderSummary.messages.health}\n`;
     if(orderSummary.messages?.career) userInputs += `Career: ${orderSummary.messages.career}\n`;
-    if(street) userInputs += `Street: ${street}\n`;
-    if(zip) userInputs += `PSČ: ${zip}\n`;
-    if(city) userInputs += `Město: ${city}\n`;
+    
 
     const templateParams = {
       billingName: billingName,       // pro {{billingName}}
@@ -101,3 +99,4 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(err => console.error('Chyba při odesílání potvrzení:', err));
   });
 });
+
